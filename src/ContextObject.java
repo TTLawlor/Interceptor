@@ -3,7 +3,6 @@
 public class ContextObject {
     private Movie movie;
 	private Customer customer;
-	// private Price price;
 
 	public ContextObject(Movie m, Customer c) {
         this.movie = m;
