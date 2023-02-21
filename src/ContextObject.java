@@ -1,23 +1,31 @@
 // if interceptor wants info, it can only get what the contextobject has 
 // - can have multiple context objects for interception points
 public class ContextObject {
-    private Movie movie;
+    private Rental rental;
 	private Customer customer;
 
-	public ContextObject(Movie m, Customer c) {
-        this.movie = m;
+	public ContextObject(Rental r, Customer c) {
+        this.rental = r;
         this.customer = c;
     }
  
 	public String getMovieDetails() {
-		return movie.getTitle();
+		return rental.getMovie().getTitle();
     }
 		
 	public String getCustomerName() {
         return customer.getName();
     }
 
-	public int getPrice() {
-        return movie.getPriceCode();
+	public double getPrice() {
+        return rental.getCharge();
+    }
+
+    public double getDuration() {
+        return rental.getDaysRented();
+    }
+
+    public double getTotalFrequentRenterPoints(){
+        return rental.getFrequentRenterPoints();
     }
 }

@@ -5,6 +5,7 @@ public class Customer {
 
     private String _name;
     private List<Rental> _rentals = new ArrayList<Rental>();
+    private Dispatcher dispatcher;
 
     public Customer(String name) {
         _name = name;
@@ -12,10 +13,17 @@ public class Customer {
 
     public void addRental(Rental arg) {
         _rentals.add(arg);
+    
+        ContextObject contextObject = new ContextObject(arg, this);
+        dispatcher.interceptRentalAdd(contextObject);
     }
 
     public String getName() {
         return _name;
+    }
+
+    public void setDispatcher(Dispatcher d){
+        this.dispatcher = d;
     }
 
     public String statement() {
@@ -36,9 +44,12 @@ public class Customer {
 
     public String htmlStatement() {
         String result = "<H1>Rental Record for <EM>" + getName() + "</EM></H1><P>\n";
+        
 
         for (Rental each: _rentals) {
             
+            ContextObject contextObject = new ContextObject(each, this);
+            dispatcher.interceptFrequentRenterPoints(contextObject);
             // show figures for each rental
             result += "\t" + each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
         }
@@ -68,6 +79,6 @@ public class Customer {
         result += each.getFrequentRenterPoints();
         }
         return result;
-       } 
+    } 
 
 }

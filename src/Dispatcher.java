@@ -2,6 +2,10 @@ import java.util.Vector;
 
 public class Dispatcher { 
     Vector<Interceptor> interceptors;
+  
+    public Dispatcher() {
+        interceptors = new Vector<>();
+    }
 
     // register a concrete interceptor
     public void attachInterceptor(Interceptor i){
