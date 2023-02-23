@@ -1,3 +1,4 @@
+package movieRentalSys;
 public class Rental {
 
     private Movie _movie;

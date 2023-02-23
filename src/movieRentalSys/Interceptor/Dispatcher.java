@@ -1,3 +1,4 @@
+package movieRentalSys.Interceptor;
 import java.util.Vector;
 
 public class Dispatcher { 
@@ -17,13 +18,13 @@ public class Dispatcher {
         interceptors.removeElement(i);
     }
 
-    public void interceptRentalAdd(ContextObject co){
+    public void dispatchRentalAdd(ContextObject co){
         for(Interceptor i: interceptors){
             i.interceptRentalAdd(co);
         }
     }
 
-    public void interceptFrequentRenterPoints(ContextObject co){
+    public void dispatchFrequentRenterPoints(ContextObject co){
         for(Interceptor i: interceptors){
             i.interceptFrequentRenterPoints(co);
         }

@@ -1,5 +1,9 @@
+package movieRentalSys;
 import java.util.ArrayList;
 import java.util.List;
+
+import movieRentalSys.Interceptor.ContextObject;
+import movieRentalSys.Interceptor.Dispatcher;
 
 public class Customer {
 
@@ -15,7 +19,7 @@ public class Customer {
         _rentals.add(arg);
     
         ContextObject contextObject = new ContextObject(arg, this);
-        dispatcher.interceptRentalAdd(contextObject);
+        dispatcher.dispatchRentalAdd(contextObject);
     }
 
     public String getName() {
@@ -49,7 +53,7 @@ public class Customer {
         for (Rental each: _rentals) {
             
             ContextObject contextObject = new ContextObject(each, this);
-            dispatcher.interceptFrequentRenterPoints(contextObject);
+            dispatcher.dispatchFrequentRenterPoints(contextObject);
             // show figures for each rental
             result += "\t" + each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
         }

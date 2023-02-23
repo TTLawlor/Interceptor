@@ -1,3 +1,7 @@
+package movieRentalSys.Interceptor;
+import movieRentalSys.Customer;
+import movieRentalSys.Rental;
+
 // if interceptor wants info, it can only get what the contextobject has 
 // - can have multiple context objects for interception points
 public class ContextObject {

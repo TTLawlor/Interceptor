@@ -1,3 +1,4 @@
+package movieRentalSys.Interceptor;
 public class ConcreteInterceptor implements Interceptor {
 
     @Override
