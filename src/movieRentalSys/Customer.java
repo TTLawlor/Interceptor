@@ -17,8 +17,10 @@ public class Customer {
 
     public void addRental(Rental arg) {
         _rentals.add(arg);
-    
+
+        // Creating a context object passing the current rental and this customer object
         ContextObject contextObject = new ContextObject(arg, this);
+        // Calling the dispatcher passing the context object for the concrete interceptor
         dispatcher.dispatchRentalAdd(contextObject);
     }
 
@@ -51,8 +53,9 @@ public class Customer {
         
 
         for (Rental each: _rentals) {
-            
+            // Creating a context object passing the current rental and this customer object
             ContextObject contextObject = new ContextObject(each, this);
+            // Calling the dispatcher passing the context object for the concrete interceptor
             dispatcher.dispatchFrequentRenterPoints(contextObject);
             // show figures for each rental
             result += "\t" + each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
